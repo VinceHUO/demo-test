@@ -1,169 +1,175 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>日本深度美食与全景规划器 - 导出版</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-        :root { --jp-red: #BC002D; --jp-dark: #1A1A1A; }
-        body { font-family: 'Noto Sans SC', sans-serif; background-color: #FDFCF8; color: var(--jp-dark); scroll-behavior: smooth; }
-        h1, h2, h3 { font-family: 'Noto Serif SC', serif; }
-        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .btn-tab.active { background-color: var(--jp-red); color: white; box-shadow: 0 4px 14px 0 rgba(188, 0, 45, 0.3); }
-        #map { height: 600px; width: 100%; border-radius: 1.5rem; }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .animate-fade-in { animation: fadeIn 0.5s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>云游 · 发现你的下一站</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="antialiased">
-
-<nav class="glass-nav sticky top-0 px-6 py-4 shadow-sm">
-    <div class="max-w-7xl mx-auto flex flex-col xl:flex-row justify-between items-center gap-6">
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-red-600">restaurant_menu</span>
-            <span class="text-xl font-bold tracking-tighter uppercase">Taste of Japan</span>
-        </div>
-        <div class="flex gap-2 bg-gray-100 p-1 rounded-full overflow-x-auto">
-            <button class="btn-tab active px-4 py-2 rounded-full text-sm font-bold" onclick="switchTab('itinerary')">美食行程</button>
-            <button class="btn-tab px-4 py-2 rounded-full text-sm font-bold" onclick="switchTab('transport')">交通指南</button>
-            <button class="btn-tab px-4 py-2 rounded-full text-sm font-bold" onclick="switchTab('stay')">住宿推荐</button>
-            <button class="btn-tab px-4 py-2 rounded-full text-sm font-bold" onclick="switchTab('map-view')">交互地图</button>
-        </div>
-        <div class="flex gap-3">
-            <button class="px-5 py-2 border-2 border-black rounded-full font-bold text-sm" onclick="exportTripPlan()">导出计划书</button>
-            <button class="px-5 py-2 bg-red-600 text-white rounded-full font-bold text-sm" onclick="exportHTML()">导出源代码</button>
-        </div>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">云游</a>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="destinations.html">目的地</a>
+        <a href="tours.html">线路</a>
+        <a href="#guides">攻略</a>
+        <a href="#contact">联系</a>
+      </nav>
+      <button class="btn-menu" aria-label="打开菜单"></button>
     </div>
-</nav>
+  </header>
 
-<header class="relative h-[30vh] md:h-[40vh] flex items-center justify-center overflow-hidden">
-    <img src="/gen?prompt=shinkansen+bullet+train+speeding+past+mount+fuji+spring+cherry+blossoms&aspect=16:9" class="absolute w-full h-full object-cover" alt="Hero">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative z-10 text-center text-white px-6">
-        <h1 class="text-3xl md:text-6xl font-bold mb-4">日本深度旅行综合规划</h1>
-    </div>
-</header>
-
-<main class="max-w-7xl mx-auto py-12 px-6">
-    <div id="itinerary" class="tab-content active">
-        <div class="flex flex-col lg:flex-row gap-12">
-            <div id="day-buttons" class="lg:w-1/4 space-y-4"></div>
-            <div id="day-detail" class="lg:w-3/4 bg-white rounded-3xl p-8 shadow-sm border border-gray-100 min-h-[500px]"></div>
+  <main>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <h1>发现你的下一站</h1>
+        <p>精选目的地与线路，让每一次出发都值得期待</p>
+        <div class="hero-search">
+          <input type="text" placeholder="想去哪里？" />
+          <input type="date" />
+          <select>
+            <option>1 人</option>
+            <option>2 人</option>
+            <option>3–5 人</option>
+            <option>6+ 人</option>
+          </select>
+          <button type="button" class="btn btn-primary">搜索</button>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <div id="transport" class="tab-content">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-                <h2 class="text-4xl font-bold">新干线与Pass</h2>
+    <section class="section destinations">
+      <div class="container">
+        <h2 class="section-title">热门目的地</h2>
+        <div class="dest-grid">
+          <a href="destinations.html#japan" class="dest-card">
+            <span class="dest-label">日本</span>
+            <span class="dest-desc">樱花、温泉与都市</span>
+          </a>
+          <a href="destinations.html#thailand" class="dest-card">
+            <span class="dest-label">泰国</span>
+            <span class="dest-desc">海岛与佛国</span>
+          </a>
+          <a href="destinations.html#xizang" class="dest-card">
+            <span class="dest-label">西藏</span>
+            <span class="dest-desc">雪山与信仰</span>
+          </a>
+          <a href="destinations.html#yunnan" class="dest-card">
+            <span class="dest-label">云南</span>
+            <span class="dest-desc">风花雪月</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tours">
+      <div class="container">
+        <h2 class="section-title">精选线路</h2>
+        <div class="tour-grid">
+          <article class="tour-card">
+            <div class="tour-img" style="background-image: url(https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80);"></div>
+            <div class="tour-body">
+              <span class="tour-tag">热卖</span>
+              <h3>京都 · 大阪 5 日经典</h3>
+              <p>伏见稻荷、清水寺、环球影城，一网打尽</p>
+              <div class="tour-meta">
+                <span>5 天</span>
+                <span class="tour-price">¥3,299 起</span>
+              </div>
+              <a href="tours.html#kyoto" class="btn btn-outline">查看详情</a>
             </div>
-            <img src="/gen?prompt=suica+ic+card+and+japan+rail+pass+on+wood+table&aspect=16:9" class="rounded-3xl shadow-2xl" alt="Transport">
-        </div>
-    </div>
-
-    <div id="stay" class="tab-content">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="card-hover">
-                <img src="/gen?prompt=modern+luxury+hotel+room+tokyo+skyline+view+night&aspect=16:9" class="rounded-3xl shadow-xl mb-6 w-full h-64 object-cover" alt="Modern">
-                <h4 class="text-2xl font-bold">都市繁华中心</h4>
+          </article>
+          <article class="tour-card">
+            <div class="tour-img" style="background-image: url(https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80);"></div>
+            <div class="tour-body">
+              <span class="tour-tag">新品</span>
+              <h3>清迈小城 4 日慢游</h3>
+              <p>寺庙、市集、大象营，悠闲泰北</p>
+              <div class="tour-meta">
+                <span>4 天</span>
+                <span class="tour-price">¥2,199 起</span>
+              </div>
+              <a href="tours.html#chiangmai" class="btn btn-outline">查看详情</a>
             </div>
-            <div class="card-hover">
-                <img src="/gen?prompt=traditional+japanese+ryokan+room+interior+with+tatami+mats+and+garden+view&aspect=16:9" class="rounded-3xl shadow-xl mb-6 w-full h-64 object-cover" alt="Traditional">
-                <h4 class="text-2xl font-bold">禅意传统町屋</h4>
+          </article>
+          <article class="tour-card">
+            <div class="tour-img" style="background-image: url(https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80);"></div>
+            <div class="tour-body">
+              <h3>拉萨 + 林芝 7 日</h3>
+              <p>布达拉宫、巴松措、南迦巴瓦</p>
+              <div class="tour-meta">
+                <span>7 天</span>
+                <span class="tour-price">¥5,899 起</span>
+              </div>
+              <a href="tours.html#tibet" class="btn btn-outline">查看详情</a>
             </div>
+          </article>
         </div>
+        <div class="section-cta">
+          <a href="tours.html" class="btn btn-primary">更多线路</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section guides" id="guides">
+      <div class="container">
+        <h2 class="section-title">旅行攻略</h2>
+        <div class="guide-grid">
+          <a href="#" class="guide-card">
+            <div class="guide-img" style="background-image: url(https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80);"></div>
+            <div class="guide-body">
+              <h3>日本赏樱指南</h3>
+              <p>花期预测与推荐路线</p>
+            </div>
+          </a>
+          <a href="#" class="guide-card">
+            <div class="guide-img" style="background-image: url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80);"></div>
+            <div class="guide-body">
+              <h3>高原出行必备</h3>
+              <p>进藏前必读</p>
+            </div>
+          </a>
+          <a href="#" class="guide-card">
+            <div class="guide-img" style="background-image: url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80);"></div>
+            <div class="guide-body">
+              <h3>东南亚海岛选岛</h3>
+              <p>普吉、苏梅、巴厘怎么选</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">云游</span>
+        <p>发现你的下一站</p>
+      </div>
+      <div class="footer-links">
+        <a href="destinations.html">目的地</a>
+        <a href="tours.html">线路</a>
+        <a href="#">攻略</a>
+        <a href="#">关于我们</a>
+        <a href="#">联系我们</a>
+      </div>
+      <div class="footer-contact">
+        <p>客服：400-xxx-xxxx</p>
+        <p>邮箱：hello@yunyou.example</p>
+      </div>
     </div>
-
-    <div id="map-view" class="tab-content">
-        <div id="map"></div>
+    <div class="footer-bottom">
+      <p>© 2025 云游 · 仅供展示</p>
     </div>
-</main>
+  </footer>
 
-<script>
-    // 完整数据模型
-    const tripData = {
-        days: [
-            { id: 1,
-              city: "东京",
-              title: "骑行探索城市",
-              image: "VCG41N2151151634.jpg",
-              desc: "骑着单车穿梭在城市的大街小巷，感受清晨的微风。",
-              transport: "租赁自行车",
-              stay: "新宿附近酒店" },
-            { id: 2, city: "东京", title: "江户前寿司之巅", image: "/gen?prompt=chef+preparing+fresh+sushi+at+tsukiji+outer+market+morning+light&aspect=4:3", desc: "筑地市场场外扫荡，午间体验银座 Omakase。", transport: "日比谷线直达银座", stay: "银座商务或高档酒店" },
-            { id: 3, city: "京都", title: "怀石料理的仪式感", image: "/gen?prompt=traditional+kyoto+kaiseki+meal+multi+course+elegant+presentation+with+maple+leaves&aspect=4:3", desc: "乘坐新干线抵达京都，傍晚在祇园品味怀石料理。", transport: "新干线 Nozomi (2.5h)", stay: "祇园传统旅馆 (Ryokan)" },
-            { id: 4, city: "京都", title: "抹茶与町屋之味", image: "/gen?prompt=japanese+matcha+tea+ceremony+with+traditional+wagashi+sweets&aspect=4:3", desc: "前往宇治体验抹茶，随后在锦市场寻找京野菜。", transport: "JR 奈良线前往宇治", stay: "河原町现代酒店" },
-            { id: 5, city: "大阪", title: "天下厨房的狂欢", image: "/gen?prompt=osaka+dotonbori+night+street+food+stalls+takoyaki+steaming+vibrant+colors&aspect=4:3", desc: "黑门市场吃扇贝，道顿堀扫荡章鱼烧与炸串。", transport: "JR 京阪本线 (45min)", stay: "难波/心斋桥地区酒店" },
-            { id: 6, city: "福冈", title: "屋台街的烟火气", image: "/gen?prompt=fukuoka+yatai+food+stalls+riverside+at+night+warm+lanterns&aspect=4:3", desc: "南下福冈，在那珂川边尝试地道的博多拉面。", transport: "山阳新干线 (2.5h)", stay: "中洲/天神地区酒店" },
-            { id: 7, city: "返程", title: "最后的和牛盛宴", image: "/gen?prompt=vibrant+flat+lay+of+assorted+japanese+cuisine+sushi+ramen+tempura+on+dark+wood+table&aspect=16:9", desc: "在福冈享用最后一次和牛午餐，随后前往机场。", transport: "机场接驳巴士", stay: "福冈机场周边" }
-        ],
-        locations: [
-            { name: "东京", pos: { lat: 35.6895, lng: 139.6917 }, type: "大都市/寿司" },
-            { name: "京都", pos: { lat: 35.0116, lng: 135.7681 }, type: "古都/怀石" },
-            { name: "大阪", pos: { lat: 34.6937, lng: 135.5023 }, type: "美食/章鱼烧" },
-            { name: "福冈", pos: { lat: 33.5902, lng: 130.4017 }, type: "博多拉面/屋台" }
-        ]
-    };
-
-    function switchTab(tabId) {
-        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
-        document.querySelectorAll('.btn-tab').forEach(el => el.classList.remove('active'));
-        event.currentTarget.classList.add('active');
-    }
-
-    function renderItinerary() {
-        const btnContainer = document.getElementById('day-buttons');
-        tripData.days.forEach(day => {
-            const btn = document.createElement('button');
-            btn.className = `day-btn w-full text-left px-5 py-4 rounded-2xl border border-gray-100 transition hover:border-red-500 bg-white shadow-sm flex items-center justify-between group`;
-            btn.innerHTML = `<div><span class="block text-[10px] font-bold text-gray-400 uppercase">Day 0${day.id}</span><span class="block font-bold text-gray-800">${day.city}</span></div><span class="material-symbols-outlined text-gray-300 group-hover:text-red-500">arrow_forward_ios</span>`;
-            btn.onclick = () => showDay(day.id, btn);
-            btnContainer.appendChild(btn);
-        });
-        showDay(1);
-    }
-
-    function showDay(id, element) {
-        const day = tripData.days.find(d => d.id === id);
-        const detail = document.getElementById('day-detail');
-        if (element) {
-            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('border-red-500', 'ring-2', 'ring-red-50'));
-            element.classList.add('border-red-500', 'ring-2', 'ring-red-50');
-        }
-        detail.innerHTML = `
-            <div class="animate-fade-in">
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2">
-                        <span class="bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded mb-4 inline-block">Day ${day.id} 计划详情</span>
-                        <h2 class="text-3xl font-bold mb-4">${day.title}</h2>
-                        <p class="text-gray-600 mb-6">${day.desc}</p>
-                        <div class="space-y-4">
-                            <div class="p-4 bg-red-50 rounded-2xl border border-red-100 flex gap-3">
-                                <span class="material-symbols-outlined text-red-600">directions_train</span>
-                                <div><h5 class="text-xs font-bold text-red-800 uppercase">交通策略</h5><p class="text-sm font-medium text-red-900">${day.transport}</p></div>
-                            </div>
-                            <div class="p-4 bg-blue-50 rounded-2xl border border-blue-100 flex gap-3">
-                                <span class="material-symbols-outlined text-blue-600">bed</span>
-                                <div><h5 class="text-xs font-bold text-blue-800 uppercase">推荐住宿区域</h5><p class="text-sm font-medium text-blue-900">${day.stay}</p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2">
-                        <img src="${day.image}" class="w-full h-auto rounded-3xl shadow-xl object-cover min-h-[300px]" alt="${day.city}">
-                    </div>
-                </div>
-            </div>`;
-    }
-
-    document.addEventListener('DOMContentLoaded', renderItinerary);
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
