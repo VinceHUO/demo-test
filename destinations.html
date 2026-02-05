@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>目的地 · 云游</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      padding: 100px 24px 48px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #0a5247 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .page-hero h1 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 8px; }
+    .page-hero p { opacity: 0.9; }
+    .dest-list { padding: 48px 0 72px; }
+    .dest-item {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .dest-item:nth-child(even) { grid-template-columns: 1fr 360px; }
+    .dest-item:nth-child(even) .dest-item-img { order: 2; }
+    .dest-item-img {
+      height: 260px;
+      border-radius: var(--radius-lg);
+      background-size: cover;
+      background-position: center;
+    }
+    .dest-item-content h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+    }
+    .dest-item-content p {
+      color: var(--color-text-muted);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .dest-item-content .btn { margin-top: 8px; }
+    @media (max-width: 768px) {
+      .dest-item, .dest-item:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+      .dest-item:nth-child(even) .dest-item-img { order: 0; }
+      .dest-item-img { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">云游</a>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="destinations.html">目的地</a>
+        <a href="tours.html">线路</a>
+        <a href="index.html#guides">攻略</a>
+        <a href="index.html#contact">联系</a>
+      </nav>
+      <button class="btn-menu" aria-label="打开菜单"></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>目的地</h1>
+      <p>探索我们精选的旅行目的地，找到你的下一站</p>
+    </div>
+  </section>
+
+  <section class="dest-list">
+    <div class="container">
+      <article class="dest-item" id="japan">
+        <div class="dest-item-img" style="background-image: url(https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=720&q=80);"></div>
+        <div class="dest-item-content">
+          <h2>日本</h2>
+          <p>从京都的千年古寺到东京的现代霓虹，从北海道的雪国到冲绳的碧海，日本四季分明、文化深厚，适合多次深度探索。樱花季与红叶季更是人气之选。</p>
+          <a href="tours.html#kyoto" class="btn btn-outline">查看日本线路</a>
+        </div>
+      </article>
+      <article class="dest-item" id="thailand">
+        <div class="dest-item-img" style="background-image: url(https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=720&q=80);"></div>
+        <div class="dest-item-content">
+          <h2>泰国</h2>
+          <p>微笑之国拥有曼谷的繁华、清迈的悠闲、普吉与苏梅的海岛风情。寺庙、市集、美食与海滩交织，性价比高，适合初次出境与家庭出游。</p>
+          <a href="tours.html#chiangmai" class="btn btn-outline">查看泰国线路</a>
+        </div>
+      </article>
+      <article class="dest-item" id="xizang">
+        <div class="dest-item-img" style="background-image: url(https://images.unsplash.com/photo-1548013146-72479768bada?w=720&q=80);"></div>
+        <div class="dest-item-content">
+          <h2>西藏</h2>
+          <p>世界屋脊，雪山与信仰同在。布达拉宫、大昭寺、巴松措、南迦巴瓦……高原风光与藏地文化令人难忘。建议提前做好高反与行程规划。</p>
+          <a href="tours.html#tibet" class="btn btn-outline">查看西藏线路</a>
+        </div>
+      </article>
+      <article class="dest-item" id="yunnan">
+        <div class="dest-item-img" style="background-image: url(https://images.unsplash.com/photo-1528181304800-259b08848526?w=720&q=80);"></div>
+        <div class="dest-item-content">
+          <h2>云南</h2>
+          <p>风花雪月的大理、艳遇之都丽江、香格里拉与梅里雪山、西双版纳的热带雨林……云南一省包罗多种地貌与民族风情，适合长线慢游。</p>
+          <a href="tours.html" class="btn btn-outline">查看云南线路</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">云游</span>
+        <p>发现你的下一站</p>
+      </div>
+      <div class="footer-links">
+        <a href="destinations.html">目的地</a>
+        <a href="tours.html">线路</a>
+        <a href="index.html#guides">攻略</a>
+        <a href="#">关于我们</a>
+        <a href="index.html#contact">联系我们</a>
+      </div>
+      <div class="footer-contact">
+        <p>客服：400-xxx-xxxx</p>
+        <p>邮箱：hello@yunyou.example</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 云游 · 仅供展示</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

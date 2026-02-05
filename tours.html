@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>线路 · 云游</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      padding: 100px 24px 48px;
+      background: linear-gradient(135deg, var(--color-primary) 0%, #0a5247 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .page-hero h1 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 8px; }
+    .page-hero p { opacity: 0.9; }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 32px;
+    }
+    .filters select {
+      padding: 10px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+    }
+    .tours-page .tour-grid { padding-bottom: 48px; }
+    .tour-detail {
+      max-width: 800px;
+      margin: 0 auto 64px;
+      padding: 0 24px;
+    }
+    .tour-detail-hero {
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .tour-detail-hero .tour-img {
+      height: 320px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 20px;
+    }
+    .tour-detail-hero .tour-tag {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .tour-detail-hero h2 {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      margin-bottom: 8px;
+    }
+    .tour-detail-hero .tour-meta {
+      margin-bottom: 16px;
+    }
+    .tour-detail-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      margin: 24px 0 12px;
+      color: var(--color-primary);
+    }
+    .tour-detail-body p, .tour-detail-body ul {
+      color: var(--color-text-muted);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .tour-detail-body ul { padding-left: 24px; }
+    .tour-detail-body li { margin-bottom: 6px; }
+    .tour-detail .btn-primary { margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">云游</a>
+      <nav class="nav">
+        <a href="index.html">首页</a>
+        <a href="destinations.html">目的地</a>
+        <a href="tours.html">线路</a>
+        <a href="index.html#guides">攻略</a>
+        <a href="index.html#contact">联系</a>
+      </nav>
+      <button class="btn-menu" aria-label="打开菜单"></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>精选线路</h1>
+      <p>跟团、自由行、当地游，总有一款适合你</p>
+    </div>
+  </section>
+
+  <section class="section tours-page">
+    <div class="container">
+      <div class="filters">
+        <select>
+          <option>全部目的地</option>
+          <option>日本</option>
+          <option>泰国</option>
+          <option>西藏</option>
+          <option>云南</option>
+        </select>
+        <select>
+          <option>行程天数</option>
+          <option>3-5 天</option>
+          <option>6-7 天</option>
+          <option>8 天以上</option>
+        </select>
+        <select>
+          <option>价格排序</option>
+          <option>从低到高</option>
+          <option>从高到低</option>
+        </select>
+      </div>
+
+      <!-- 线路详情块：京都大阪 -->
+      <div class="tour-detail" id="kyoto">
+        <div class="tour-detail-hero">
+          <div class="tour-img" style="background-image: url(https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=900&q=80);"></div>
+          <span class="tour-tag">热卖</span>
+          <h2>京都 · 大阪 5 日经典</h2>
+          <p>伏见稻荷、清水寺、祇园、环球影城，关西精华一网打尽。含往返机票参考、精选酒店与一日自由活动。</p>
+          <div class="tour-meta">
+            <span>5 天 4 晚</span>
+            <span class="tour-price">¥3,299 起 / 人</span>
+          </div>
+          <a href="#" class="btn btn-primary">立即预订</a>
+        </div>
+        <div class="tour-detail-body">
+          <h3>行程亮点</h3>
+          <ul>
+            <li>伏见稻荷大社、清水寺、祇园花见小路</li>
+            <li>大阪环球影城一日畅玩</li>
+            <li>心斋桥、道顿堀自由逛吃</li>
+            <li>可选和服体验、怀石料理</li>
+          </ul>
+          <h3>费用说明</h3>
+          <p>含：往返机票（参考）、4 晚酒店、部分早餐、行程内用车与门票。不含：签证、部分餐食、个人消费。</p>
+        </div>
+      </div>
+
+      <!-- 线路详情块：清迈 -->
+      <div class="tour-detail" id="chiangmai">
+        <div class="tour-detail-hero">
+          <div class="tour-img" style="background-image: url(https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=900&q=80);"></div>
+          <span class="tour-tag">新品</span>
+          <h2>清迈小城 4 日慢游</h2>
+          <p>寺庙、市集、大象营与泰北美食，节奏舒缓，适合想要放松的旅行者。</p>
+          <div class="tour-meta">
+            <span>4 天 3 晚</span>
+            <span class="tour-price">¥2,199 起 / 人</span>
+          </div>
+          <a href="#" class="btn btn-primary">立即预订</a>
+        </div>
+        <div class="tour-detail-body">
+          <h3>行程亮点</h3>
+          <ul>
+            <li>双龙寺、契迪龙寺、塔佩门</li>
+            <li>大象保护营半日体验</li>
+            <li>周末夜市或周日夜市（视出发日）</li>
+            <li>泰式按摩、丛林飞跃可选</li>
+          </ul>
+          <h3>费用说明</h3>
+          <p>含：3 晚酒店、部分早餐、行程内用车与部分门票。不含：往返机票、签证、部分餐食。</p>
+        </div>
+      </div>
+
+      <!-- 线路详情块：西藏 -->
+      <div class="tour-detail" id="tibet">
+        <div class="tour-detail-hero">
+          <div class="tour-img" style="background-image: url(https://images.unsplash.com/photo-1548013146-72479768bada?w=900&q=80);"></div>
+          <h2>拉萨 + 林芝 7 日</h2>
+          <p>布达拉宫、大昭寺、巴松措、鲁朗、南迦巴瓦观景，拉萨与林芝经典组合，含入藏函与用车。</p>
+          <div class="tour-meta">
+            <span>7 天 6 晚</span>
+            <span class="tour-price">¥5,899 起 / 人</span>
+          </div>
+          <a href="#" class="btn btn-primary">立即预订</a>
+        </div>
+        <div class="tour-detail-body">
+          <h3>行程亮点</h3>
+          <ul>
+            <li>布达拉宫、大昭寺、八廓街</li>
+            <li>巴松措、鲁朗林海、色季拉山口</li>
+            <li>南迦巴瓦观景台（视天气）</li>
+            <li>含入藏函办理协助、高原保险建议</li>
+          </ul>
+          <h3>费用说明</h3>
+          <p>含：6 晚酒店、部分餐食、行程内用车、首道门票、入藏函办理。不含：往返大交通、部分餐食、个人消费。</p>
+        </div>
+      </div>
+
+      <!-- 卡片列表 -->
+      <h2 class="section-title">更多线路</h2>
+      <div class="tour-grid">
+        <article class="tour-card">
+          <div class="tour-img" style="background-image: url(https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80);"></div>
+          <div class="tour-body">
+            <h3>云南大理丽江 6 日</h3>
+            <p>洱海、古城、玉龙雪山</p>
+            <div class="tour-meta">
+              <span>6 天</span>
+              <span class="tour-price">¥2,899 起</span>
+            </div>
+            <a href="#" class="btn btn-outline">查看详情</a>
+          </div>
+        </article>
+        <article class="tour-card">
+          <div class="tour-img" style="background-image: url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80);"></div>
+          <div class="tour-body">
+            <h3>普吉岛 5 日自由行</h3>
+            <p>机票+酒店，出海自选</p>
+            <div class="tour-meta">
+              <span>5 天</span>
+              <span class="tour-price">¥3,599 起</span>
+            </div>
+            <a href="#" class="btn btn-outline">查看详情</a>
+          </div>
+        </article>
+        <article class="tour-card">
+          <div class="tour-img" style="background-image: url(https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80);"></div>
+          <div class="tour-body">
+            <h3>东京富士 4 日</h3>
+            <p>浅草、秋叶原、富士山区域</p>
+            <div class="tour-meta">
+              <span>4 天</span>
+              <span class="tour-price">¥4,199 起</span>
+            </div>
+            <a href="#" class="btn btn-outline">查看详情</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">云游</span>
+        <p>发现你的下一站</p>
+      </div>
+      <div class="footer-links">
+        <a href="destinations.html">目的地</a>
+        <a href="tours.html">线路</a>
+        <a href="index.html#guides">攻略</a>
+        <a href="#">关于我们</a>
+        <a href="index.html#contact">联系我们</a>
+      </div>
+      <div class="footer-contact">
+        <p>客服：400-xxx-xxxx</p>
+        <p>邮箱：hello@yunyou.example</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 云游 · 仅供展示</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
